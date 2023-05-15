@@ -1,32 +1,33 @@
 import { useEffect, useState, FunctionComponent } from 'react';
 import { Flex, Box } from '@chakra-ui/react';
-import { networkConfig, chainType } from '../../config/network';
+import { useConfig } from '@useelven/core';
 import { isMobile } from '../../utils/isMobile';
 import QRCode from 'qrcode';
 
-interface MobileLoginQRProps {
-  walletConnectUri: string;
+interface WalletConnectQRCodeProps {
+  uri: string;
 }
 
-export const MobileLoginQR: FunctionComponent<MobileLoginQRProps> = ({
-  walletConnectUri,
-}) => {
+export const WalletConnectQRCode: FunctionComponent<
+  WalletConnectQRCodeProps
+> = ({ uri }) => {
   const [qrCodeSvg, setQrCodeSvg] = useState('');
+  const { walletConnectDeepLink } = useConfig();
 
   useEffect(() => {
     const generateQRCode = async () => {
-      if (!walletConnectUri) {
+      if (!uri) {
         return;
       }
 
-      const svg = await QRCode.toString(walletConnectUri, {
+      const svg = await QRCode.toString(uri, {
         type: 'svg',
       });
 
       setQrCodeSvg(svg);
     };
     generateQRCode();
-  }, [walletConnectUri]);
+  }, [uri]);
 
   const mobile = isMobile();
 
@@ -57,13 +58,13 @@ export const MobileLoginQR: FunctionComponent<MobileLoginQRProps> = ({
             _hover={{ bg: 'GhostVerse.color2.lighter' }}
             transition="background-color .3s"
             as="a"
-            href={`${
-              networkConfig[chainType]?.walletConnectDeepLink
-            }?wallet-connect=${encodeURIComponent(walletConnectUri)}`}
+            href={`${walletConnectDeepLink}?wallet-connect=${encodeURIComponent(
+              uri
+            )}`}
             rel="noopener noreferrer nofollow"
             target="_blank"
           >
-            Maiar Login
+            xPortal Login
           </Box>
         </Flex>
       ) : null}

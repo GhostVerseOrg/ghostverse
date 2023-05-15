@@ -11,7 +11,7 @@ const Mint: NextPage = () => {
   return (
     <MainLayout>
       <HeaderMenu>
-        <HeaderMenuButtons enabled={['auth', 'about']} />
+        <HeaderMenuButtons enabled={['auth']} />
       </HeaderMenu>
       <Box
         display="flex"

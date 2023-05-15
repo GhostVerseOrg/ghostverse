@@ -1,7 +1,8 @@
 import { Avatar, Text } from '@chakra-ui/react';
 import { Tooltip } from '@chakra-ui/react';
-import { avatarIdUrl } from '../config/network';
-import { useAccount } from '../hooks/auth/useAccount';
+import Link from 'next/link';
+import { avatarIdUrl } from '../config/dappCustoms';
+import { useAccount } from '@useelven/core';
 
 export const UserAvatar = () => {
   const { address } = useAccount();
