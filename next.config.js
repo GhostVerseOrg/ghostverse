@@ -14,12 +14,16 @@ const nextConfig = {
     };
     return config;
   },
-  reactStrictMode: false, // will be handled in following releases, when enabled there are problems in development
+  reactStrictMode: true,
   async rewrites() {
+    if (!process.env.MULTIVERSX_PRIVATE_API) {
+      return [];
+    }
     return [
       {
-        source: `${process.env.NEXT_PUBLIC_ELROND_API}/:path*`,
-        destination: `${process.env.ELROND_CUSTOM_API}/:path*`,
+        source: `${process.env.NEXT_PUBLIC_MULTIVERSX_API}/:path*`,
+        destination: `${process.env.MULTIVERSX_CUSTOM_API}/:path*`,
+        destination: `${process.env.MULTIVERSX_PRIVATE_API}/:path*`,
       },
     ];
   },
@@ -33,6 +37,9 @@ const nextConfig = {
   images: {
     domains: [
       'nftstorage.link',
+      'media.multiversx.com',
+      'devnet-media.multiversx.com',
+      'testnet-media.multiversx.com',
       'media.elrond.com',
       'devnet-media.elrond.com',
       'testnet-media.elrond.com',

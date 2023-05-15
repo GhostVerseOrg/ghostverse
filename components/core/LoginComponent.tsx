@@ -1,19 +1,27 @@
 // Login component wraps all auth services in one place
 // You can always use only one of them if needed
 import { useCallback, memo, useState } from 'react';
-import { Box, Stack } from '@chakra-ui/react';
-import { useLogin } from '../../hooks/auth/useLogin';
-import { LoginMethodsEnum } from '../../types/enums';
-import { MobileLoginQR } from './MobileLoginQR';
+import { Box, Stack, Text } from '@chakra-ui/react';
+import { useLogin, LoginMethodsEnum } from '@useelven/core';
+import { WalletConnectQRCode } from './WalletConnectQRCode';
+import { WalletConnectPairings } from './WalletConnectPairings';
 import { ActionButton } from '../ActionButton';
 import { LedgerAccountsList } from './LedgerAccountsList';
 
 export const LoginComponent = memo(() => {
-  // If you need the auth signature and token you can pass it here
-  // example: const { ... } = useLogin({ token: "some_hash_here" })
-  // all auth providers will return the signature, it will be saved in localstorage and global state
-  const { login, isLoggedIn, error, walletConnectUri, getHWAccounts } =
-    useLogin();
+  // If you need the auth signature and token pas your unique token in useLogin
+  // For the demo purposes here is a dummy token
+  const {
+    login,
+    isLoggedIn,
+    error,
+    walletConnectUri,
+    getHWAccounts,
+    walletConnectPairings,
+    walletConnectPairingLogin,
+    walletConnectRemovePairing,
+  } = useLogin({ token: 'token_just_for_testing_purposes' });
+
   const [loginMethod, setLoginMethod] = useState<LoginMethodsEnum>();
 
   const handleLogin = useCallback(
@@ -32,7 +40,15 @@ export const LoginComponent = memo(() => {
     setLoginMethod(undefined);
   }, []);
 
-  if (error) return <Box textAlign="center">{error}</Box>;
+  if (error)
+    return (
+      <Stack>
+        <Box textAlign="center">{error}</Box>
+        <Text textAlign="center" pt={4} fontWeight={700}>
+          Close and try again
+        </Text>
+      </Stack>
+    );
 
   return (
     <>
@@ -43,19 +59,19 @@ export const LoginComponent = memo(() => {
               isFullWidth
               onClick={handleLogin(LoginMethodsEnum.wallet)}
             >
-              MultiversX Web Wallet
+              Web Wallet
             </ActionButton>
             <ActionButton
               isFullWidth
               onClick={handleLogin(LoginMethodsEnum.extension)}
             >
-              Maiar Browser Extension
+              Browser Extension
             </ActionButton>
             <ActionButton
               isFullWidth
               onClick={handleLogin(LoginMethodsEnum.walletconnect)}
             >
-              Maiar Mobile App
+              xPortal App
             </ActionButton>
             <ActionButton isFullWidth onClick={handleLedgerAccountsList}>
               Ledger
@@ -64,10 +80,21 @@ export const LoginComponent = memo(() => {
         )}
       </Stack>
       {loginMethod === LoginMethodsEnum.walletconnect && walletConnectUri && (
-        <Box mt={5} background="white">
-          <MobileLoginQR walletConnectUri={walletConnectUri} />
+        <Box mt={5}>
+          <WalletConnectQRCode uri={walletConnectUri} />
         </Box>
       )}
+
+      {loginMethod === LoginMethodsEnum.walletconnect &&
+        walletConnectPairings &&
+        walletConnectPairings.length > 0 && (
+          <WalletConnectPairings
+            pairings={walletConnectPairings}
+            login={walletConnectPairingLogin}
+            remove={walletConnectRemovePairing}
+          />
+        )}
+
       {loginMethod === LoginMethodsEnum.ledger && (
         <>
           <LedgerAccountsList
