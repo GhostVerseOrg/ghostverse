@@ -1,12 +1,16 @@
 // After minting an NFT, there is no guarantee that the image thumbnail
-// will be immediately available through Elrond API
+// will be immediately available through MultiversX API
 // This is why we have this helper. It will fallback to the IPFS source using a custom
-// IPFS gateway, we take the CID from Elrond's IPFS gateway url here to be sure that we will get it
+// IPFS gateway, we take the CID from MultiversX's IPFS gateway url here to be sure that we will get it
 
 import { FC, CSSProperties, PropsWithChildren } from 'react';
 import { Box } from '@chakra-ui/react';
 import Image, { ImageProps } from 'next/image';
-import { customIPFSGateway, elrondIPFSGateway } from '../config/network';
+import { useConfig } from '@useelven/core';
+import {
+  customIPFSGateway,
+  getOldElrondIPFSGateway,
+} from '../config/dappCustoms';
 
 const commonImageStyles: CSSProperties = {
   objectFit: 'contain',
@@ -26,7 +30,7 @@ const commonImagesProps = {
 
 interface NftImageHelperProps {
   thumbnail: string;
-  elrondIPFSGatewayUrl: string;
+  multiversxIPFSGatewayUrl: string;
   href?: string;
 }
 
@@ -35,12 +39,16 @@ const isDefaultThumbnail = (thumbnail: string) => {
 };
 
 const getImageUrlFromIPFS = (
-  elrondIPFSGatewayUrl: string,
-  thumbnail: string
+  multiversxIPFSGatewayUrl: string,
+  thumbnail: string,
+  IPFSGateway: string,
+  chainType?: string
 ) => {
-  if (elrondIPFSGatewayUrl) {
-    const CIDandImageFileName = elrondIPFSGatewayUrl.replace(
-      elrondIPFSGateway,
+  if (multiversxIPFSGatewayUrl) {
+    const CIDandImageFileName = multiversxIPFSGatewayUrl.replace(
+      multiversxIPFSGatewayUrl.includes('elrond')
+        ? getOldElrondIPFSGateway(chainType || 'devnet')
+        : IPFSGateway,
       ''
     );
     return `${customIPFSGateway}${CIDandImageFileName}`;
@@ -75,15 +83,21 @@ const MaybeWithHref: FC<PropsWithChildren<WithHrefProps>> = ({
 
 export const NftImageHelper: FC<NftImageHelperProps> = ({
   thumbnail,
-  elrondIPFSGatewayUrl,
+  multiversxIPFSGatewayUrl,
   href,
 }) => {
+  const { IPFSGateway, chainType } = useConfig();
   return (
     <>
-      {isDefaultThumbnail(thumbnail) ? (
+      {isDefaultThumbnail(thumbnail) && IPFSGateway ? (
         <MaybeWithHref href={href}>
           <Image
-            src={getImageUrlFromIPFS(elrondIPFSGatewayUrl, thumbnail)}
+            src={getImageUrlFromIPFS(
+              multiversxIPFSGatewayUrl,
+              thumbnail,
+              IPFSGateway,
+              chainType
+            )}
             alt=""
             {...commonImagesProps}
           />
