@@ -1,9 +1,11 @@
-import { useMintTransaction } from '../hooks/interaction/elvenScHooks/useMintTransaction';
+import { useMintTransaction } from '../hooks/useMintTransaction';
 import { useCallback, FC, useState } from 'react';
 import { ActionButton } from './ActionButton';
-import { ScTransactionCb } from '../hooks/interaction/useScTransaction';
-import { useLoginInfo } from '../hooks/auth/useLoginInfo';
-import { LoginMethodsEnum } from '../types/enums';
+import {
+  useLoginInfo,
+  LoginMethodsEnum,
+  TransactionCallbackParams,
+} from '@useelven/core';
 import {
   NumberInput,
   NumberInputField,
@@ -16,12 +18,12 @@ import { TransactionPendingModal } from './core/TransactionPendingModal';
 
 interface MintFormProps {
   leftToMintForUser: number;
-  cb?: (params: ScTransactionCb) => void;
+  cb?: (params: TransactionCallbackParams) => void;
 }
 
 export const MintForm: FC<MintFormProps> = ({ leftToMintForUser, cb }) => {
   const [amount, setAmount] = useState(1);
-  const { mint, pending, transaction, error } = useMintTransaction(cb);
+  const { mint, pending, txResult, error } = useMintTransaction(cb);
   const { loginMethod } = useLoginInfo();
 
   const handleMint = useCallback(() => {
@@ -35,7 +37,7 @@ export const MintForm: FC<MintFormProps> = ({ leftToMintForUser, cb }) => {
 
   const getAdditionalPendingMessage = () => {
     if (loginMethod === LoginMethodsEnum.walletconnect) {
-      return 'Sign the transaction using Maiar mobile app. It will take some time to finish. You can always close this message. You will get the transaction hash when finished.';
+      return 'Sign the transaction using xPortal mobile app. It will take some time to finish. You can always close this message. You will get the transaction hash when finished.';
     }
     if (loginMethod === LoginMethodsEnum.ledger) {
       return 'Sign the transaction using Ledger HW. It will take some time to finish. You can always close this message. You will get the transaction hash when finished.';
@@ -61,7 +63,7 @@ export const MintForm: FC<MintFormProps> = ({ leftToMintForUser, cb }) => {
         >
           <NumberInputField
             py={5}
-            _focus={{ outline: 'none' }}
+            _focusVisible={{ outline: 'none' }}
             disabled={leftToMintForUser <= 0}
             placeholder="Amount of tokens to mint..."
             borderColor="ghostVerse.color1.darker"
@@ -71,8 +73,8 @@ export const MintForm: FC<MintFormProps> = ({ leftToMintForUser, cb }) => {
           />
           {leftToMintForUser <= 0 ? null : (
             <NumberInputStepper>
-              <NumberIncrementStepper borderColor="ghostVerse.color1.darker" />
-              <NumberDecrementStepper />
+              <NumberIncrementStepper color="elvenTools.base.light" />
+              <NumberDecrementStepper color="elvenTools.base.light" />
             </NumberInputStepper>
           )}
         </NumberInput>
@@ -85,7 +87,7 @@ export const MintForm: FC<MintFormProps> = ({ leftToMintForUser, cb }) => {
       </Box>
       <TransactionPendingModal
         isOpen={pending}
-        successTxHash={transaction?.getHash().toString()}
+        successTxHash={txResult?.hash}
         txError={error}
         additionalMessage={getAdditionalPendingMessage()}
       />

@@ -8,18 +8,16 @@ import {
   SimpleGrid,
 } from '@chakra-ui/react';
 import Link from 'next/link';
-import { useAccount } from '../hooks/auth/useAccount';
-import { useApiCall } from '../hooks/interaction/useApiCall';
+import { useAccount, useApiCall, SCQueryType, useConfig } from '@useelven/core';
 import { NFT } from '../types/nfts';
-import { SCQueryType } from '../hooks/interaction/useScQuery';
-import { useElvenScQuery } from '../hooks/interaction/elvenScHooks/useElvenScQuery';
+import { useElvenScQuery } from '../hooks/useElvenScQuery';
 import { NftImageHelper } from './NftImageHelper';
-import { networkConfig, chainType } from '../config/network';
 
 const SIZE_PER_PAGE = 10000;
 
 export const ProfileNFTsList = () => {
   const { address } = useAccount();
+  const { explorerAddress } = useConfig();
 
   const { data: collectionTicker, isLoading: collectionTickerLoading } =
     useElvenScQuery<number>({
@@ -78,8 +76,8 @@ export const ProfileNFTsList = () => {
               <Stack position="relative">
                 <NftImageHelper
                   thumbnail={nft.media?.[0].thumbnailUrl}
-                  elrondIPFSGatewayUrl={nft.url}
-                  href={`${networkConfig[chainType].explorerAddress}/nfts/${nft.identifier}`}
+                  multiversxIPFSGatewayUrl={nft.url}
+                  href={`${explorerAddress}/nfts/${nft.identifier}`}
                 />
               </Stack>
               <Box
@@ -89,7 +87,7 @@ export const ProfileNFTsList = () => {
                 textAlign="center"
               >
                 <a
-                  href={`${networkConfig[chainType].explorerAddress}/nfts/${nft.identifier}`}
+                  href={`${explorerAddress}/nfts/${nft.identifier}`}
                   rel="noopener noreferrer"
                   target="_blank"
                 >
@@ -102,7 +100,7 @@ export const ProfileNFTsList = () => {
                 fontSize={{ base: 10, md: 14 }}
               >
                 <a
-                  href={`${networkConfig[chainType].explorerAddress}/nfts/${nft.identifier}`}
+                  href={`${explorerAddress}/nfts/${nft.identifier}`}
                   rel="noopener noreferrer"
                   target="_blank"
                 >

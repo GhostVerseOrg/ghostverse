@@ -9,15 +9,15 @@ import {
   Spinner,
   Flex,
   ModalHeader,
+  Stack,
   Tooltip,
 } from '@chakra-ui/react';
 import { FC } from 'react';
 import { ActionButton } from '../ActionButton';
 import { LoginComponent } from './LoginComponent';
-import { useEffectOnlyOnUpdate } from '../../hooks/tools/useEffectOnlyOnUpdate';
-import { useLogin } from '../../hooks/auth/useLogin';
-import { useLogout } from '../../hooks/auth/useLogout';
-import { setLoggingInState } from '../../store/auth';
+import { useEffectOnlyOnUpdate } from '../../hooks/useEffectOnlyOnUpdate';
+import { getSigningDeviceName } from '../../utils/getSigningDeviceName';
+import { useLogin, useLogout, useLoginInfo } from '@useelven/core';
 
 interface LoginModalButtonProps {
   onClose?: () => void;
@@ -32,7 +32,8 @@ export const LoginModalButton: FC<LoginModalButtonProps> = ({
   onClose,
   onOpen,
 }) => {
-  const { isLoggedIn, isLoggingIn } = useLogin();
+  const { isLoggedIn, isLoggingIn, setLoggingInState } = useLogin();
+  const { loginMethod } = useLoginInfo();
   const { logout } = useLogout();
   const {
     isOpen: opened,
@@ -44,10 +45,13 @@ export const LoginModalButton: FC<LoginModalButtonProps> = ({
     if (isLoggedIn) {
       close();
     }
-    if (!opened) {
-      setLoggingInState('error', '');
-    }
-  }, [opened, isLoggedIn]);
+  }, [isLoggedIn]);
+
+  const onCloseComplete = () => {
+    setLoggingInState('error', '');
+  };
+
+  const ledgerOrPortalName = getSigningDeviceName(loginMethod);
 
   return (
     <>
@@ -116,6 +120,7 @@ export const LoginModalButton: FC<LoginModalButtonProps> = ({
         onClose={close}
         isCentered
         scrollBehavior="inside"
+        onCloseComplete={onCloseComplete}
       >
         <CustomModalOverlay />
         <ModalContent
@@ -141,13 +146,22 @@ export const LoginModalButton: FC<LoginModalButtonProps> = ({
                 justifyContent="center"
                 position="absolute"
                 inset={0}
+                zIndex="overlay"
               >
-                <Spinner
-                  thickness="3px"
-                  speed="0.4s"
-                  color="elvenTools.color2.base"
-                  size="xl"
-                />
+                <Stack alignItems="center">
+                  {ledgerOrPortalName ? (
+                    <>
+                      <Text fontSize="lg">Confirmation required</Text>
+                      <Text fontSize="sm">Approve on {ledgerOrPortalName}</Text>
+                    </>
+                  ) : null}
+                  <Spinner
+                    thickness="3px"
+                    speed="0.4s"
+                    color="elvenTools.color2.base"
+                    size="xl"
+                  />
+                </Stack>
               </Flex>
             )}
             <LoginComponent />
