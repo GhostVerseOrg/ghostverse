@@ -46,7 +46,7 @@ export const Footer = () => {
           px={6}
           fontSize="xl"
           alignItems="center"
-          href="https://xport.al/referral/7nvae7kpo1"
+          href="/install-xportal-app"
           title="Install xPortal"
           _hover={{
             bg: 'ghostVerse.blue.lighter',

@@ -129,13 +129,6 @@ export const team = [
     socialMediaLinks: ['https://www.linkedin.com/in/albertlanne/'],
   },
   {
-    name: 'Kylian',
-    bio: 'Community manager',
-    imageUrl:
-      '/media/ghostverse-kylian-mr-ghost-mxghosts-nft-dao-multiversx-blockchain.webp',
-    socialMediaLinks: ['https://twitter.com/timkyl2203'],
-  },
-  {
     name: 'Thip',
     bio: '3D Artist',
     imageUrl:
@@ -148,20 +141,16 @@ export const earn = [
   {
     name: 'Passive Income',
     bio: 'Hold and earn. 100 percent of the EGLD staking revenue is redistributed to holders. Get more than 5 MxGhosts and earn EGLD automatically and for life.',
+    link: '',
     imageUrl:
       '/media/ghostverse-passive-income-mr-ghost-mxghosts-nft-dao-multiversx-blockchain.webp',
   },
   {
-    name: 'Weekly Rewards',
-    bio: 'Every monday we organize weekly rewards on Twitter. A trait is picked and the winners share the prize pool!',
-    imageUrl:
-      '/media/ghostverse-weekly-rewards-mr-ghost-mxghosts-nft-dao-multiversx-blockchain.webp',
-  },
-  {
     name: 'Monthly Rewards',
-    bio: 'Win a free NFT mint each month by using your Mr. Ghost NFT as your avatar in Maiar app. Entries are limited and already filled up.',
+    bio: 'Win a free NFT mint each month by using your Mr Ghost NFT as your avatar in xPortal app. 5 new entries max per month.',
     imageUrl:
       '/media/ghostverse-monthly-rewards-mr-ghost-mxghosts-nft-dao-multiversx-blockchain.webp',
+    link: 'https://forms.gle/uWUGATAL29rAEjUE6'
   },
 ];
 

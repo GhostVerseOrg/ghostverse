@@ -239,12 +239,40 @@ export const MintHero = () => {
           fantastic world!
         </Text>
         {!mintingPaused ? (
-          <Box mt={6}>
-            <NFTLeftToMint
-              data={totalTokensLeft || 0}
-              dropData={dropData || 0}
-              dataLoading={dropActive ? dropIsLoading : totalIsLoading}
-            />
+          // <Box mt={6}>
+          //   <NFTLeftToMint
+          //     data={totalTokensLeft || 0}
+          //     dropData={dropData || 0}
+          //     dataLoading={dropActive ? dropIsLoading : totalIsLoading}
+          //   />
+          // </Box>
+          <Box>
+            <Text
+              fontSize="2xl"
+              fontWeight="bold"
+              mt={10}
+              mb={5}
+              color="ghostVerse.blue.base"
+              textAlign={{ base: 'center', md: 'left' }}
+            >
+              Drop #3 Sold Out!
+            </Text>
+            <Text
+              fontSize="xl"
+              fontWeight="bold"
+              mt={10}
+              mb={5}
+              textAlign={{ base: 'center', md: 'left' }}
+            >
+              Drop #4 is being considered by the members.
+            </Text>
+            <Text
+              fontSize="xl"
+              fontWeight="bold"
+              textAlign={{ base: 'center', md: 'left' }}
+            >
+              Join us in making a decision.
+            </Text>
           </Box>
         ) : (
           <Box>
