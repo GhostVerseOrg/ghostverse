@@ -1,13 +1,15 @@
 import { Box, Text, Image } from '@chakra-ui/react';
+import Link from 'next/link';
 import { FC } from 'react';
 
 interface EarnItemProps {
   name: string;
   imageUrl: string;
+  link: string;
   bio?: string;
 }
 
-export const EarnItem: FC<EarnItemProps> = ({ name, imageUrl, bio }) => {
+export const EarnItem: FC<EarnItemProps> = ({ name, imageUrl, bio, link }) => {
   return (
     <Text
       as="a"
@@ -16,21 +18,30 @@ export const EarnItem: FC<EarnItemProps> = ({ name, imageUrl, bio }) => {
       borderColor="ghostVerse.color2.base"
       borderWidth={1}
       backdropFilter="blur(3px)"
+      display={'flex'}
+      flexDir={{ base: 'column', lg: 'row'}}
     >
-      <Box display="flex" alignItems="center" justifyContent="center">
+      <Box w={'20%'} display="flex" alignItems="center" justifyContent="center">
         <Image src={imageUrl} alt={name} boxSize="140px" objectFit="contain" />
       </Box>
-      <Text
-        as="h2"
-        color="ghostVerse.color2.darker"
-        fontSize="xl"
-        fontWeight="black"
-        mt={5}
-        mb={3}
-      >
-        {name}
-      </Text>
-      {bio && <Text mt={5}>{bio}</Text>}
+      <Box w={'80%'}>
+        <Text
+          as="h2"
+          color="ghostVerse.color2.darker"
+          fontSize="xl"
+          fontWeight="black"
+          mt={5}
+          mb={3}
+        >
+          {name}
+        </Text>
+        {bio && <Text mt={5}>{bio}</Text>}
+        {link && <Link passHref href={link}>
+          <Box color="ghostVerse.blue.base" mt={2}>Play</Box>
+        </Link>
+        }
+        
+      </Box>
     </Text>
   );
 };

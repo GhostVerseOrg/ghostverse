@@ -30,7 +30,7 @@ export const Earn = () => {
       animate="animate"
       variants={fadeInUp}
     >
-      <SimpleGrid columns={{ lg: 3, md: 2, sm: 1 }} spacing={10}>
+      <SimpleGrid columns={{ base: 1 }} spacing={10}>
         {earn.map((earnItem, index) => (
           <EarnItem key={index} {...earnItem} />
         ))}

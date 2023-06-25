@@ -1,17 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Text, useBreakpointValue } from '@chakra-ui/react';
 import { useCallback, useEffect } from 'react';
-import { Address } from '@elrondnetwork/erdjs';
-import { SCQueryType } from '../hooks/interaction/useScQuery';
-import { useElvenScQuery } from '../hooks/interaction/elvenScHooks/useElvenScQuery';
-import { MintForm } from './MintForm';
-import { Authenticated } from './core/Authenticated';
-import { useAccount } from '../hooks/auth/useAccount';
-import { LoginModalButton } from './core/LoginModalButton';
+import { Address } from '@multiversx/sdk-core';
+import { SCQueryType, useAccount, useConfig } from '@useelven/core';
+import { useElvenScQuery } from '../hooks/useElvenScQuery';
 import { NFTLeftToMint } from './NFTLeftToMint';
-import { NFTAllowlistEnabled } from './NFTAllowlistEnabled';
-import { NFTMintedAlready } from './NFTMintedAlready';
-import { NFTLeftToMintPerAddress } from './NFTLeftToMintPerAddress';
 import { motion } from 'framer-motion';
 
 const easing = [0.6, -0.05, 0.01, 0.99];
@@ -32,10 +25,10 @@ const fadeInUp = {
 };
 
 // TODO: Prepare separate components for the segments here
-// TODO: use Valtio for global smart contract config state + dispatchers to be able to trigger changes from each component
 
 export const MintHero = () => {
   const { address } = useAccount();
+  const { chainType } = useConfig();
 
   const { data: mintingPaused } = useElvenScQuery<boolean>({
     funcName: 'isMintingPaused',
@@ -252,42 +245,6 @@ export const MintHero = () => {
           //     dropData={dropData || 0}
           //     dataLoading={dropActive ? dropIsLoading : totalIsLoading}
           //   />
-          //   <Box>
-          //     <Authenticated
-          //       fallback={
-          //         <Box
-          //           mt={6}
-          //           display="flex"
-          //           justifyContent={isContentCentered ? 'center' : 'flex-start'}
-          //         >
-          //           <LoginModalButton />
-          //         </Box>
-          //       }
-          //       spinnerCentered={isContentCentered}
-          //     >
-          //       {/* <NFTAllowlistEnabled
-          //         data={allowlistCheckData}
-          //         dataLoading={allowlistCheckLoading}
-          //       />
-          //       <NFTMintedAlready
-          //         data={mintedData}
-          //         dataLoading={mintedDataLoading}
-          //       /> */}
-          //       {!isLoadingTokensLimitPerAddressTotal &&
-          //       !tokensLimitPerAddressPerDropLoading &&
-          //       !Number.isNaN(tokensLeftPerUser) ? (
-          //         <>
-          //           {/* <NFTLeftToMintPerAddress
-          //             leftToMintForUser={tokensLeftPerUser}
-          //           /> */}
-          //           <MintForm
-          //             cb={handleRefreshData}
-          //             leftToMintForUser={tokensLeftPerUser}
-          //           />
-          //         </>
-          //       ) : null}
-          //     </Authenticated>
-          //   </Box>
           // </Box>
           <Box>
             <Text
@@ -320,19 +277,30 @@ export const MintHero = () => {
         ) : (
           <Box>
             <Text
+              fontSize="2xl"
+              fontWeight="bold"
+              mt={10}
+              mb={5}
+              color="ghostVerse.blue.base"
+              textAlign={{ base: 'center', md: 'left' }}
+            >
+              Drop #3 Sold Out!
+            </Text>
+            <Text
               fontSize="xl"
               fontWeight="bold"
               mt={10}
+              mb={5}
               textAlign={{ base: 'center', md: 'left' }}
             >
-              Minting was not started yet or is paused at the moment.
+              Drop #4 is being considered by the members.
             </Text>
             <Text
               fontSize="xl"
               fontWeight="bold"
               textAlign={{ base: 'center', md: 'left' }}
             >
-              Please be back soon!
+              Join us in making a decision.
             </Text>
           </Box>
         )}
