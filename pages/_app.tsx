@@ -15,6 +15,8 @@ import { theme } from '../config/chakraTheme';
 import { SWRConfig } from 'swr';
 import { useToast } from '@chakra-ui/react';
 import { useCallback } from 'react';
+import Fonts from '../components/Fonts';
+import { AnimatePresence } from 'framer-motion';
 
 const toastId = 'elven-tools-error-toast';
 
@@ -48,10 +50,13 @@ const ElvenToolsDapp = ({ Component, pageProps }: AppProps) => {
   }, [toast]);
 
   return (
-    <SWRConfig value={{ onError: handleErrorToast }}>
-      <ChakraProvider theme={theme}>
-        <Component {...pageProps} />
-      </ChakraProvider>
+    <SWRConfig>
+      <AnimatePresence>
+        <ChakraProvider theme={theme}>
+          <Fonts />
+          <Component {...pageProps} />
+        </ChakraProvider>
+      </AnimatePresence>
     </SWRConfig>
   );
 };

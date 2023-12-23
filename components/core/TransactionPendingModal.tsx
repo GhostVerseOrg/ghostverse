@@ -8,12 +8,12 @@ import {
   useDisclosure,
   ModalOverlay,
   ModalCloseButton,
+  Box,
 } from '@chakra-ui/react';
 import { FC } from 'react';
 import { useConfig } from '@useelven/core';
 import { useEffectOnlyOnUpdate } from '../../hooks/useEffectOnlyOnUpdate';
 import { shortenHash } from '../../utils/shortenHash';
-
 interface TransactionPendingModalProps {
   isOpen: boolean;
   successTxHash?: string;
@@ -70,7 +70,7 @@ export const TransactionPendingModal: FC<TransactionPendingModalProps> = ({
     <Modal isOpen={opened} size="sm" onClose={onClose} isCentered>
       <CustomModalOverlay />
       <ModalContent
-        bgColor="elvenTools.dark.darker"
+        bgColor="ghostVerse.dark.darker"
         px={6}
         pt={7}
         pb={10}
@@ -83,7 +83,7 @@ export const TransactionPendingModal: FC<TransactionPendingModalProps> = ({
           </Text>
 
           {!txError && (
-            <Flex alignItems="center" justifyContent="center" mt={8}>
+            <Flex alignItems="center" justifyContent="center" mt={2}>
               {successTxHash && (
                 <Text
                   as="a"

@@ -1,6 +1,8 @@
 import NextLink from 'next/link';
 import { Box, Text } from '@chakra-ui/react';
 import { useConfig } from '@useelven/core';
+import { ImgEarth } from './ImgEarth';
+import { ImgG } from './ImgG';
 
 export const Logo = () => {
   const { chainType } = useConfig();
@@ -13,7 +15,12 @@ export const Logo = () => {
         gap={2}
         position="relative"
         userSelect="none"
+        cursor="pointer"
       >
+        <ImgEarth />
+        <Box width={{ base: '130px', md: '200px' }}>
+          <ImgG />
+        </Box>
         <Text
           position="absolute"
           right="0"
@@ -25,17 +32,6 @@ export const Logo = () => {
           color="elvenTools.color2.base"
         >
           {chainType}
-        </Text>
-
-        <Text
-          as="span"
-          cursor="pointer"
-          mb={0}
-          fontSize="4xl"
-          fontWeight="black"
-          color="elvenTools.white"
-        >
-          Weird Faces
         </Text>
       </Box>
     </NextLink>

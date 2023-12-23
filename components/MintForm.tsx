@@ -53,6 +53,7 @@ export const MintForm: FC<MintFormProps> = ({ leftToMintForUser, cb }) => {
         alignItems="center"
         justifyContent={{ base: 'center', md: 'flex-start' }}
       >
+        0.23 EGLD/NFT
         <NumberInput
           maxW="100px"
           min={1}
@@ -65,6 +66,10 @@ export const MintForm: FC<MintFormProps> = ({ leftToMintForUser, cb }) => {
             _focusVisible={{ outline: 'none' }}
             disabled={leftToMintForUser <= 0}
             placeholder="Amount of tokens to mint..."
+            borderColor="ghostVerse.color1.darker"
+            borderWidth={1}
+            borderRadius={0}
+            outline="none"
           />
           {leftToMintForUser <= 0 ? null : (
             <NumberInputStepper>

@@ -1,4 +1,4 @@
-import { Avatar } from '@chakra-ui/react';
+import { Avatar, Text } from '@chakra-ui/react';
 import { Tooltip } from '@chakra-ui/react';
 import Link from 'next/link';
 import { avatarIdUrl } from '../config/dappCustoms';
@@ -10,9 +10,16 @@ export const UserAvatar = () => {
   if (!address) return null;
 
   return (
-    <Link href="/profile">
+    <Text
+      as="a"
+      href="/profile"
+      borderColor="black"
+      borderRadius="100%"
+      borderWidth={1}
+      _hover={{ borderColor: 'ghostVerse.color1.darker' }}
+    >
       <Tooltip
-        bg="elvenTools.dark.darker"
+        bg="ghostVerse.green.base"
         fontWeight="light"
         placement="top"
         py={3}
@@ -20,11 +27,11 @@ export const UserAvatar = () => {
         mb={3}
         hasArrow
         arrowSize={12}
-        borderRadius={10}
+        borderRadius={0}
         label="Go to profile page"
       >
         <Avatar size="md" src={avatarIdUrl(address)} />
       </Tooltip>
-    </Link>
+    </Text>
   );
 };

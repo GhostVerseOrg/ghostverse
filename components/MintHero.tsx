@@ -1,17 +1,28 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Text, useBreakpointValue } from '@chakra-ui/react';
-import Link from 'next/link';
 import { useCallback, useEffect } from 'react';
 import { Address } from '@multiversx/sdk-core';
 import { SCQueryType, useAccount, useConfig } from '@useelven/core';
 import { useElvenScQuery } from '../hooks/useElvenScQuery';
-import { MintForm } from './MintForm';
-import { Authenticated } from './core/Authenticated';
-import { LoginModalButton } from './core/LoginModalButton';
 import { NFTLeftToMint } from './NFTLeftToMint';
-import { NFTAllowlistEnabled } from './NFTAllowlistEnabled';
-import { NFTMintedAlready } from './NFTMintedAlready';
-import { NFTLeftToMintPerAddress } from './NFTLeftToMintPerAddress';
+import { motion } from 'framer-motion';
+
+const easing = [0.6, -0.05, 0.01, 0.99];
+
+const fadeInUp = {
+  initial: {
+    y: 60,
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: easing,
+    },
+  },
+};
 
 // TODO: Prepare separate components for the segments here
 
@@ -190,118 +201,110 @@ export const MintHero = () => {
   const tokensLeftPerUser = getLeftToMintForUser();
 
   return (
-    <Box width="100%">
-      <Text
-        as="h1"
-        fontSize={{ base: '2xl', md: '3xl', lg: '5xl' }}
-        textAlign={{ base: 'center', md: 'left' }}
-        fontWeight="black"
-        lineHeight="shorter"
-        mb={5}
-      >
-        ⚡ Mint some of them
-      </Text>
-      <Text
-        as="h2"
-        fontSize="lg"
-        fontWeight="thin"
-        textAlign={{ base: 'center', md: 'left' }}
-      >
-        To be able to mint you have to be logged in to be able to mint. Remember
-        that it will mint only on the devent. If you want to do that, you need
-        to connect using one of the methods and the {chainType} address with
-        some xEGLD funds.
-      </Text>
-      {!mintingPaused ? (
-        <Box mt={6}>
-          <NFTLeftToMint
-            data={totalTokensLeft || 0}
-            dropData={dropData || 0}
-            dataLoading={dropActive ? dropIsLoading : totalIsLoading}
-          />
+    <motion.div
+      exit={{ opacity: 0 }}
+      initial="initial"
+      animate="animate"
+      variants={fadeInUp}
+    >
+      <Box width="100%">
+        <Text
+          as="h1"
+          fontSize={{ base: '2xl' }}
+          textAlign={{ base: 'left' }}
+          fontWeight="black"
+          lineHeight="shorter"
+          mb={5}
+        >
+          Collect MxGhosts and join the clan.
+        </Text>
+        <Text as="h2" fontSize="md" fontWeight="thin">
+          The GhostVerse is an otherworldly universe within the MultiversX
+          blockchain.
+          <br />
+          <br />
+          The 8658 inhabitants of the GhostVerse are known as the MxGhosts, they
+          are the guardians of the MultiversX, tasked with haunting and keeping
+          the peace. They have the right to vote in the GhostVerse DAO and can
+          shape the future of the universe through their decisions.
+          <br />
+          <br />
+          Some MxGhosts join the GhostClan, a powerful organization that
+          controls the haunting of the MultiversX. They are paid every month in
+          EGLD for their services, providing them with a passive income.
+          <br />
+          <br />
+          Collecting and owning a Mr Ghost NFT is not just a way to own a piece
+          of digital art, it&apos;s also a way to become a part of this
+          fantastic world!
+        </Text>
+        {!mintingPaused ? (
+          // <Box mt={6}>
+          //   <NFTLeftToMint
+          //     data={totalTokensLeft || 0}
+          //     dropData={dropData || 0}
+          //     dataLoading={dropActive ? dropIsLoading : totalIsLoading}
+          //   />
+          // </Box>
           <Box>
-            <Authenticated
-              fallback={
-                <Box
-                  mt={6}
-                  display="flex"
-                  justifyContent={isContentCentered ? 'center' : 'flex-start'}
-                >
-                  <LoginModalButton />
-                </Box>
-              }
-              spinnerCentered={isContentCentered}
+            <Text
+              fontSize="2xl"
+              fontWeight="bold"
+              mt={10}
+              mb={5}
+              color="ghostVerse.blue.base"
+              textAlign={{ base: 'center', md: 'left' }}
             >
-              <NFTAllowlistEnabled
-                data={allowlistCheckData}
-                dataLoading={allowlistCheckLoading}
-              />
-              <NFTMintedAlready
-                data={mintedData}
-                dataLoading={mintedDataLoading}
-              />
-              {!isLoadingTokensLimitPerAddressTotal &&
-              !tokensLimitPerAddressPerDropLoading &&
-              !Number.isNaN(tokensLeftPerUser) ? (
-                <>
-                  <NFTLeftToMintPerAddress
-                    leftToMintForUser={tokensLeftPerUser}
-                  />
-                  <MintForm
-                    cb={handleRefreshData}
-                    leftToMintForUser={tokensLeftPerUser}
-                  />
-                </>
-              ) : null}
-              {mintedData && mintedData > 0 ? (
-                <Box
-                  display="flex"
-                  alignItems="center"
-                  mt={6}
-                  justifyContent={{ base: 'center', md: 'flex-start' }}
-                >
-                  <Text
-                    as="span"
-                    fontSize={{ base: 'md', sm: 'xl' }}
-                    fontWeight="bold"
-                  >
-                    Check your NFTs:
-                  </Text>
-                  <Box
-                    ml={3}
-                    color="elvenTools.color2.base"
-                    fontSize="2xl"
-                    fontWeight="black"
-                    textDecoration="underline"
-                  >
-                    <Link color="elvenTools.color2.base" href="/profile">
-                      here
-                    </Link>
-                  </Box>
-                </Box>
-              ) : null}
-            </Authenticated>
+              Drop #3 Sold Out!
+            </Text>
+            <Text
+              fontSize="xl"
+              fontWeight="bold"
+              mt={10}
+              mb={5}
+              textAlign={{ base: 'center', md: 'left' }}
+            >
+              Drop #4 is being considered by the members.
+            </Text>
+            <Text
+              fontSize="xl"
+              fontWeight="bold"
+              textAlign={{ base: 'center', md: 'left' }}
+            >
+              Join us in making a decision.
+            </Text>
           </Box>
-        </Box>
-      ) : (
-        <Box>
-          <Text
-            fontSize="xl"
-            fontWeight="bold"
-            mt={10}
-            textAlign={{ base: 'center', md: 'left' }}
-          >
-            Minting was not started yet or is paused at the moment.
-          </Text>
-          <Text
-            fontSize="xl"
-            fontWeight="bold"
-            textAlign={{ base: 'center', md: 'left' }}
-          >
-            Please be back soon!
-          </Text>
-        </Box>
-      )}
-    </Box>
+        ) : (
+          <Box>
+            <Text
+              fontSize="2xl"
+              fontWeight="bold"
+              mt={10}
+              mb={5}
+              color="ghostVerse.blue.base"
+              textAlign={{ base: 'center', md: 'left' }}
+            >
+              Drop #3 Sold Out!
+            </Text>
+            <Text
+              fontSize="xl"
+              fontWeight="bold"
+              mt={10}
+              mb={5}
+              textAlign={{ base: 'center', md: 'left' }}
+            >
+              Drop #4 is being considered by the members.
+            </Text>
+            <Text
+              fontSize="xl"
+              fontWeight="bold"
+              textAlign={{ base: 'center', md: 'left' }}
+            >
+              Join us in making a decision.
+            </Text>
+          </Box>
+        )}
+      </Box>
+    </motion.div>
   );
 };

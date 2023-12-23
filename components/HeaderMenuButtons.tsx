@@ -1,7 +1,6 @@
 import NextLink from 'next/link';
 import { Box, Link } from '@chakra-ui/react';
 import { FC } from 'react';
-import { SocialMediaIcons } from './SocialMediaIcons';
 import { LoginModalButton } from './core/LoginModalButton';
 import { UserAvatar } from './UserAvatar';
 
@@ -32,8 +31,6 @@ export const HeaderMenuButtons: FC<HeaderMenuButtonsProps> = ({ enabled }) => {
           About
         </Link>
       )}
-
-      <SocialMediaIcons />
 
       <UserAvatar />
 

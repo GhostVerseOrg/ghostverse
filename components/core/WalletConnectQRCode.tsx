@@ -44,19 +44,18 @@ export const WalletConnectQRCode: FunctionComponent<
         }}
       />
       {mobile ? (
-        <Flex justifyContent="center">
+        <Flex justifyContent="center" background="black">
           <Box
             width="100%"
             textAlign="center"
-            color="elvenTools.white"
-            borderColor="elvenTools.color2.base"
-            borderWidth={2}
-            borderRadius="lg"
+            borderColor="ghostVerse.color1.darker"
+            borderWidth={1}
+            bgColor="transparent"
             py={2}
             px={6}
             mt={6}
             fontWeight="normal"
-            _hover={{ bg: 'elvenTools.color2.darker' }}
+            _hover={{ bg: 'GhostVerse.color2.lighter' }}
             transition="background-color .3s"
             as="a"
             href={`${walletConnectDeepLink}?wallet-connect=${encodeURIComponent(

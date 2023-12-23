@@ -1,4 +1,12 @@
-import { Box, Stack, Spinner, Card, CardBody, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Stack,
+  Spinner,
+  Card,
+  CardBody,
+  Text,
+  SimpleGrid,
+} from '@chakra-ui/react';
 import Link from 'next/link';
 import { useAccount, useApiCall, SCQueryType, useConfig } from '@useelven/core';
 import { NFT } from '../types/nfts';
@@ -40,7 +48,7 @@ export const ProfileNFTsList = () => {
     return (
       <Box mt={12} textAlign="center">
         <Text>No NFTs minted yet!</Text>
-        <Link href="/mint">
+        <Link href="/mxghosts">
           <Text textDecoration="underline">Mint some!</Text>
         </Link>
       </Box>
@@ -49,23 +57,23 @@ export const ProfileNFTsList = () => {
 
   return (
     <>
-      <Stack
-        direction="row"
-        mt={12}
-        justifyContent="center"
-        flexWrap="wrap"
-        gap={6}
-        spacing={0}
+      <SimpleGrid
+        my={{ base: '8', md: '12' }}
+        columns={{ base: 1, sm: 2, md: 3, xl: 5 }}
+        gap={{ base: 1, sm: 2, md: 3, xl: 5 }}
       >
         {nfts?.map((nft) => (
           <Card
-            maxW="xs"
-            minW="xs"
+            w="100%"
             key={nft.identifier}
-            backgroundColor="elvenTools.dark.darker"
+            backgroundColor="ghostVerse.color1.lighter"
+            borderColor="ghostVerse.color1.darker"
+            borderWidth={1}
+            borderRadius="0"
+            backdropFilter="blur(3px)"
           >
-            <CardBody>
-              <Stack height={280} position="relative">
+            <CardBody p={{ base: 1, sm: 2, md: 3 }}>
+              <Stack position="relative">
                 <NftImageHelper
                   thumbnail={nft.media?.[0].thumbnailUrl}
                   multiversxIPFSGatewayUrl={nft.url}
@@ -86,7 +94,11 @@ export const ProfileNFTsList = () => {
                   {nft.name}
                 </a>
               </Box>
-              <Box color="elvenTools.white" textAlign="center">
+              <Box
+                textAlign="center"
+                color="ghostVerse.grey.base"
+                fontSize={{ base: 10, md: 14 }}
+              >
                 <a
                   href={`${explorerAddress}/nfts/${nft.identifier}`}
                   rel="noopener noreferrer"
@@ -98,7 +110,7 @@ export const ProfileNFTsList = () => {
             </CardBody>
           </Card>
         ))}
-      </Stack>
+      </SimpleGrid>
     </>
   );
 };

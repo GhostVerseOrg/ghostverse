@@ -11,7 +11,7 @@ const About: NextPage = () => {
   return (
     <MainLayout>
       <HeaderMenu>
-        <HeaderMenuButtons enabled={['auth', 'mint', 'about']} />
+        <HeaderMenuButtons enabled={['auth']} />
       </HeaderMenu>
       <Box
         sx={{

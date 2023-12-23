@@ -18,7 +18,7 @@ export const CollectionInfoBox: FC<CollectionInfoBoxProps> = ({
   return (
     <Tooltip
       label={label}
-      bg="elvenTools.dark.darker"
+      bg="ghostVerse.green.base"
       fontWeight="light"
       placement="top"
       py={3}
@@ -26,7 +26,7 @@ export const CollectionInfoBox: FC<CollectionInfoBoxProps> = ({
       mb={3}
       hasArrow
       arrowSize={12}
-      borderRadius={10}
+      borderRadius={0}
     >
       <Box
         py={3}
@@ -38,7 +38,7 @@ export const CollectionInfoBox: FC<CollectionInfoBoxProps> = ({
       >
         {isLoading ? (
           <Box display="flex" alignItems="center" justifyContent="center">
-            <Spinner color="elvenTools.color2.base" />
+            <Spinner color="ghostVerse.color1.darker" />
           </Box>
         ) : (
           <Text fontWeight="normal">
