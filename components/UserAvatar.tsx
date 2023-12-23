@@ -1,6 +1,5 @@
 import { Avatar, Text } from '@chakra-ui/react';
 import { Tooltip } from '@chakra-ui/react';
-import Link from 'next/link';
 import { avatarIdUrl } from '../config/dappCustoms';
 import { useAccount } from '@useelven/core';
 

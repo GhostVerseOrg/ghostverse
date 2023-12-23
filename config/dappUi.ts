@@ -150,11 +150,16 @@ export const earn = [
     bio: 'Win a free NFT mint each month by using your Mr Ghost NFT as your avatar in xPortal app. 5 new entries max per month.',
     imageUrl:
       '/media/ghostverse-monthly-rewards-mr-ghost-mxghosts-nft-dao-multiversx-blockchain.webp',
-    link: 'https://forms.gle/uWUGATAL29rAEjUE6'
+    link: 'https://forms.gle/uWUGATAL29rAEjUE6',
   },
 ];
 
 export const secondary = [
+  {
+    name: 'Spotlight',
+    imageUrl: '/media/logo-xspotlight.webp',
+    socialMediaLinks: ['https://xspotlight.com/collections/MRG-1c3ba4'],
+  },
   {
     name: 'Xoxno',
     imageUrl: '/media/logo-xoxno.webp',
@@ -166,13 +171,8 @@ export const secondary = [
     socialMediaLinks: ['https://www.frameit.gg/marketplace/MRG-1c3ba4'],
   },
   {
-    name: 'Deadrare',
-    imageUrl: '/media/logo-deadrare.webp',
-    socialMediaLinks: ['https://deadrare.io/collection/MRG-1c3ba4'],
-  },
-  {
-    name: 'Elrond NFT Swap',
+    name: 'Krogan Swap',
     imageUrl: '/media/logo-multiversx-nft-swap.webp',
-    socialMediaLinks: ['https://elrondnftswap.com/collection/MRG-1c3ba4'],
+    socialMediaLinks: ['https://kroganswap.com/collection/MRG-1c3ba4/ranking'],
   },
 ];

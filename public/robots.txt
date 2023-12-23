@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://devnet-ghostverse.netlify.app/
+
+# Sitemaps
+Sitemap: https://devnet-ghostverse.netlify.app/sitemap.xml
