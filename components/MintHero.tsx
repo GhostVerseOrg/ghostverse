@@ -213,76 +213,87 @@ export const MintHero = () => {
         piece of the spook with a Mr Ghost NFT!
       </Text>
       {!mintingPaused ? (
-        <Box mt={6}>
-          <NFTLeftToMint
-            data={totalTokensLeft || 0}
-            dropData={dropData || 0}
-            dataLoading={dropActive ? dropIsLoading : totalIsLoading}
-          />
-          <Box>
-            <Authenticated
-              fallback={
-                <Box
-                  mt={6}
-                  display="flex"
-                  justifyContent={isContentCentered ? 'center' : 'flex-start'}
-                >
-                  <LoginModalButton />
-                </Box>
-              }
-              spinnerCentered={isContentCentered}
-            >
-              <NFTAllowlistEnabled
-                data={allowlistCheckData}
-                dataLoading={allowlistCheckLoading}
-              />
-              <NFTMintedAlready
-                data={mintedData}
-                dataLoading={mintedDataLoading}
-              />
-              {!isLoadingTokensLimitPerAddressTotal &&
-              !tokensLimitPerAddressPerDropLoading &&
-              !Number.isNaN(tokensLeftPerUser) ? (
-                <>
-                  <NFTLeftToMintPerAddress
-                    leftToMintForUser={tokensLeftPerUser}
-                  />
-                  <MintForm
-                    cb={handleRefreshData}
-                    leftToMintForUser={tokensLeftPerUser}
-                  />
-                </>
-              ) : null}
-              {mintedData && mintedData > 0 ? (
-                <Box
-                  display="flex"
-                  alignItems="center"
-                  mt={6}
-                  justifyContent={{ base: 'center', md: 'flex-start' }}
-                >
-                  <Text
-                    as="span"
-                    fontSize={{ base: 'md', sm: 'xl' }}
-                    fontWeight="bold"
-                  >
-                    Check your NFTs:
-                  </Text>
-                  <Box
-                    ml={3}
-                    color="elvenTools.color2.base"
-                    fontSize="2xl"
-                    fontWeight="black"
-                    textDecoration="underline"
-                  >
-                    <Link color="elvenTools.color2.base" href="/profile">
-                      here
-                    </Link>
-                  </Box>
-                </Box>
-              ) : null}
-            </Authenticated>
-          </Box>
-        </Box>
+        // <Box mt={6}>
+        //   <NFTLeftToMint
+        //     data={totalTokensLeft || 0}
+        //     dropData={dropData || 0}
+        //     dataLoading={dropActive ? dropIsLoading : totalIsLoading}
+        //   />
+        //   <Box>
+        //     <Authenticated
+        //       fallback={
+        //         <Box
+        //           mt={6}
+        //           display="flex"
+        //           justifyContent={isContentCentered ? 'center' : 'flex-start'}
+        //         >
+        //           <LoginModalButton />
+        //         </Box>
+        //       }
+        //       spinnerCentered={isContentCentered}
+        //     >
+        //       <NFTAllowlistEnabled
+        //         data={allowlistCheckData}
+        //         dataLoading={allowlistCheckLoading}
+        //       />
+        //       <NFTMintedAlready
+        //         data={mintedData}
+        //         dataLoading={mintedDataLoading}
+        //       />
+        //       {!isLoadingTokensLimitPerAddressTotal &&
+        //       !tokensLimitPerAddressPerDropLoading &&
+        //       !Number.isNaN(tokensLeftPerUser) ? (
+        //         <>
+        //           <NFTLeftToMintPerAddress
+        //             leftToMintForUser={tokensLeftPerUser}
+        //           />
+        //           <MintForm
+        //             cb={handleRefreshData}
+        //             leftToMintForUser={tokensLeftPerUser}
+        //           />
+        //         </>
+        //       ) : null}
+        //       {mintedData && mintedData > 0 ? (
+        //         <Box
+        //           display="flex"
+        //           alignItems="center"
+        //           mt={6}
+        //           justifyContent={{ base: 'center', md: 'flex-start' }}
+        //         >
+        //           <Text
+        //             as="span"
+        //             fontSize={{ base: 'md', sm: 'xl' }}
+        //             fontWeight="bold"
+        //           >
+        //             Check your NFTs:
+        //           </Text>
+        //           <Box
+        //             ml={3}
+        //             color="elvenTools.color2.base"
+        //             fontSize="2xl"
+        //             fontWeight="black"
+        //             textDecoration="underline"
+        //           >
+        //             <Link color="elvenTools.color2.base" href="/profile">
+        //               here
+        //             </Link>
+        //           </Box>
+        //         </Box>
+        //       ) : null}
+        //     </Authenticated>
+        //   </Box>
+        // </Box>
+        <Box>
+        <Text
+          fontSize="xl"
+          fontWeight="bold"
+          mt={10}
+          textAlign={{ base: 'center', md: 'left' }}
+          color="ghostVerse.blue.base"
+        >
+          Drop #4 Coming Soon
+        </Text>
+      </Box>
       ) : (
         <Box>
           <Text
@@ -291,14 +302,7 @@ export const MintHero = () => {
             mt={10}
             textAlign={{ base: 'center', md: 'left' }}
           >
-            Minting was not started yet or is paused at the moment.
-          </Text>
-          <Text
-            fontSize="xl"
-            fontWeight="bold"
-            textAlign={{ base: 'center', md: 'left' }}
-          >
-            Please be back soon!
+            Drop #4 Coming Soon
           </Text>
         </Box>
       )}
