@@ -1,3 +1,30 @@
+### [7.4.1](https://github.com/ElvenTools/elven-tools-dapp/releases/tag/v7.4.1) (2023-12-12)
+- update useElven and dependencies
+
+### [7.4.0](https://github.com/ElvenTools/elven-tools-dapp/releases/tag/v7.4.0) (2023-10-29)
+- add support for xAlias
+- update Next.js to v14 (min Node version is now 18.7.0)
+- update other dependencies
+
+### [7.3.0](https://github.com/ElvenTools/elven-tools-dapp/releases/tag/v7.3.0) (2023-07-31)
+- update useElven (support for guardians)
+- update dependencies
+
+### [7.2.0](https://github.com/ElvenTools/elven-tools-dapp/releases/tag/v7.2.0) (2023-06-22)
+- update useElven (new useTokenTransfer hook)
+- update dependencies
+
+### [7.1.1](https://github.com/ElvenTools/elven-tools-dapp/releases/tag/v7.1.1) (2023-06-07)
+- update useElven - fix native auth login token handling
+- update dependencies
+
+### [7.1.0](https://github.com/ElvenTools/elven-tools-dapp/releases/tag/v7.1.0) (2023-06-04)
+- update useElven and dependencies
+
+### [7.0.0](https://github.com/ElvenTools/elven-tools-dapp/releases/tag/v7.0.0) (2023-05-28)
+- **Breaking:** The dapp now uses the useElven version with built-in native token support. There is no fallback, so it is a breaking change. Standard string-based tokens will be deprecated across the MultiversX soon
+- update dependencies
+
 ### [6.2.1](https://github.com/ElvenTools/elven-tools-dapp/releases/tag/v6.2.1) (2023-05-14)
 - update [useElven](https://www.useelven.com/)
 - fix problems with initialization of the HW provider
