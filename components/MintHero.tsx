@@ -1,17 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Text, useBreakpointValue } from '@chakra-ui/react';
-import Link from 'next/link';
+// import Link from 'next/link';
 import { useCallback, useEffect } from 'react';
 import { Address } from '@multiversx/sdk-core';
 import { SCQueryType, useAccount } from '@useelven/core';
 import { useElvenScQuery } from '../hooks/useElvenScQuery';
-import { MintForm } from './MintForm';
-import { Authenticated } from './core/Authenticated';
-import { LoginModalButton } from './core/LoginModalButton';
-import { NFTLeftToMint } from './NFTLeftToMint';
-import { NFTAllowlistEnabled } from './NFTAllowlistEnabled';
-import { NFTMintedAlready } from './NFTMintedAlready';
-import { NFTLeftToMintPerAddress } from './NFTLeftToMintPerAddress';
+// import { MintForm } from './MintForm';
+// import { Authenticated } from './core/Authenticated';
+// import { LoginModalButton } from './core/LoginModalButton';
+// import { NFTLeftToMint } from './NFTLeftToMint';
+// import { NFTAllowlistEnabled } from './NFTAllowlistEnabled';
+// import { NFTMintedAlready } from './NFTMintedAlready';
+// import { NFTLeftToMintPerAddress } from './NFTLeftToMintPerAddress';
 
 // TODO: Prepare separate components for the segments here
 
