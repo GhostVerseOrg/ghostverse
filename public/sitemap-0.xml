@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url><loc>https://devnet-ghostverse.netlify.app</loc><lastmod>2023-12-23T11:29:06.104Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devnet-ghostverse.netlify.app/about</loc><lastmod>2023-12-23T11:29:06.104Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devnet-ghostverse.netlify.app/clan</loc><lastmod>2023-12-23T11:29:06.104Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devnet-ghostverse.netlify.app/dao</loc><lastmod>2023-12-23T11:29:06.104Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devnet-ghostverse.netlify.app/faq</loc><lastmod>2023-12-23T11:29:06.104Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devnet-ghostverse.netlify.app/install-xportal-app</loc><lastmod>2023-12-23T11:29:06.104Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devnet-ghostverse.netlify.app/mxghosts</loc><lastmod>2023-12-23T11:29:06.104Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devnet-ghostverse.netlify.app/play-and-earn</loc><lastmod>2023-12-23T11:29:06.104Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devnet-ghostverse.netlify.app/profile</loc><lastmod>2023-12-23T11:29:06.104Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devnet-ghostverse.netlify.app/roadmap</loc><lastmod>2023-12-23T11:29:06.104Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devnet-ghostverse.netlify.app/team</loc><lastmod>2023-12-23T11:29:06.104Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devnet-ghostverse.netlify.app/wallet</loc><lastmod>2023-12-23T11:29:06.104Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+</urlset>

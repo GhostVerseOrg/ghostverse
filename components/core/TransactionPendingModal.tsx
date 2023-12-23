@@ -8,7 +8,6 @@ import {
   useDisclosure,
   ModalOverlay,
   ModalCloseButton,
-  Box,
 } from '@chakra-ui/react';
 import { FC } from 'react';
 import { useConfig } from '@useelven/core';

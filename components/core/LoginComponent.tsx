@@ -9,8 +9,6 @@ import { ActionButton } from '../ActionButton';
 import { LedgerAccountsList } from './LedgerAccountsList';
 
 export const LoginComponent = memo(() => {
-  // If you need the auth signature and token pas your unique token in useLogin
-  // For the demo purposes here is a dummy token
   const {
     login,
     isLoggedIn,
@@ -20,7 +18,7 @@ export const LoginComponent = memo(() => {
     walletConnectPairings,
     walletConnectPairingLogin,
     walletConnectRemovePairing,
-  } = useLogin({ token: 'token_just_for_testing_purposes' });
+  } = useLogin();
 
   const [loginMethod, setLoginMethod] = useState<LoginMethodsEnum>();
 
@@ -57,9 +55,9 @@ export const LoginComponent = memo(() => {
           <>
             <ActionButton
               isFullWidth
-              onClick={handleLogin(LoginMethodsEnum.wallet)}
+              onClick={handleLogin(LoginMethodsEnum.walletconnect)}
             >
-              Web Wallet
+              xPortal App
             </ActionButton>
             <ActionButton
               isFullWidth
@@ -69,12 +67,18 @@ export const LoginComponent = memo(() => {
             </ActionButton>
             <ActionButton
               isFullWidth
-              onClick={handleLogin(LoginMethodsEnum.walletconnect)}
+              onClick={handleLogin(LoginMethodsEnum.wallet)}
             >
-              xPortal App
+              Web Wallet
             </ActionButton>
             <ActionButton isFullWidth onClick={handleLedgerAccountsList}>
               Ledger
+            </ActionButton>
+            <ActionButton
+              isFullWidth
+              onClick={handleLogin(LoginMethodsEnum.xalias)}
+            >
+              xAlias
             </ActionButton>
           </>
         )}

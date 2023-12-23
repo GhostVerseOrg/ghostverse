@@ -9,16 +9,17 @@ The Dapp is built using Nextjs and a couple of helpful tools. It allows you to i
 
 ### It provides:
 
-- Auth with 4 MultiversX blockchain providers
+- Signing with 4 MultiversX blockchain [providers](https://docs.multiversx.com/sdk-and-tools/sdk-js/)
   - Web Wallet
   - xPortal mobile app
   - MultiversX DeFi browser extension
   - Ledger Nano
+- [Guarderd transactions](https://docs.multiversx.com/sdk-and-tools/sdk-dapp/internal-processes/guardians/#specifications-of-a-guarded-transaction)
 - React hooks for making transactions
 - React hooks for querying smart contracts
 - Tools and React hooks for app state synchronization
-- API endpoint rewrites and 'guard' middleware
-- Preconfigured UI based on Chakra UI
+- Optional API endpoint rewrites
+- Preconfigured UI based on [Chakra UI](https://chakra-ui.com/)
 - The template with sections mainly used on minter dapps (it will be developed further)
 
 ### @useElven/core
@@ -69,8 +70,5 @@ More docs on it: [Minter Dapp introduction](https://www.elven.tools/docs/minter-
 - [useElven](https://www.useElven.com) - React core hooks for MultiversX blockchain
 - [elven.js](https://www.elvenjs.com) - standalone lite SDK for browsers without build steps
 - [Buildo Begins](https://github.com/xdevguild/buildo-begins) - CLI helper tools - interaction with APIs, smart contracts and protocol
+- [Buildo.dev](https://www.buildo.dev) - the app that helps with blockchain interactions, like issuing tokens and querying smart contracts.
 - [Nextjs Dapp Template](https://github.com/xdevguild/nextjs-dapp-template) - Open source Dapp template for the MultiversX blockchain (more general one).
-
-### Community
-
-- Example with auth verification on the backend side: [elven-tools-dapp-with-auth](https://github.com/borispoehland/elven-tools-dapp-with-auth) thanks to [@borispoehland](https://github.com/borispoehland)

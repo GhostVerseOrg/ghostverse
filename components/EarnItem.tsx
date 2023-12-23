@@ -19,7 +19,7 @@ export const EarnItem: FC<EarnItemProps> = ({ name, imageUrl, bio, link }) => {
       borderWidth={1}
       backdropFilter="blur(3px)"
       display={'flex'}
-      flexDir={{ base: 'column', lg: 'row'}}
+      flexDir={{ base: 'column', lg: 'row' }}
     >
       <Box w={'20%'} display="flex" alignItems="center" justifyContent="center">
         <Image src={imageUrl} alt={name} boxSize="140px" objectFit="contain" />
@@ -36,11 +36,13 @@ export const EarnItem: FC<EarnItemProps> = ({ name, imageUrl, bio, link }) => {
           {name}
         </Text>
         {bio && <Text mt={5}>{bio}</Text>}
-        {link && <Link passHref href={link}>
-          <Box color="ghostVerse.blue.base" mt={2}>Play</Box>
-        </Link>
-        }
-        
+        {link && (
+          <Link passHref href={link}>
+            <Box color="ghostVerse.blue.base" mt={2}>
+              Play
+            </Box>
+          </Link>
+        )}
       </Box>
     </Text>
   );

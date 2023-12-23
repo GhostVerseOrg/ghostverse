@@ -13,12 +13,12 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { useNetworkSync } from '@useelven/core';
 import { theme } from '../config/chakraTheme';
 import { SWRConfig } from 'swr';
-import { useToast } from '@chakra-ui/react';
-import { useCallback } from 'react';
+// import { useToast } from '@chakra-ui/react';
+// import { useCallback } from 'react';
 import Fonts from '../components/Fonts';
 import { AnimatePresence } from 'framer-motion';
 
-const toastId = 'elven-tools-error-toast';
+// const toastId = 'elven-tools-error-toast';
 
 const ElvenToolsDapp = ({ Component, pageProps }: AppProps) => {
   useNetworkSync({
@@ -32,22 +32,22 @@ const ElvenToolsDapp = ({ Component, pageProps }: AppProps) => {
       : {}),
   });
 
-  const toast = useToast();
+  // const toast = useToast();
 
-  const handleErrorToast = useCallback(() => {
-    if (!toast.isActive(toastId)) {
-      toast({
-        id: toastId,
-        variant: 'subtle',
-        title: 'API error!',
-        description:
-          'The API is not responding at the moment. Please try later. Also, make sure that you are using the proper chain type when connecting locally',
-        status: 'error',
-        duration: 10000,
-        isClosable: true,
-      });
-    }
-  }, [toast]);
+  // const handleErrorToast = useCallback(() => {
+  //   if (!toast.isActive(toastId)) {
+  //     toast({
+  //       id: toastId,
+  //       variant: 'subtle',
+  //       title: 'API error!',
+  //       description:
+  //         'The API is not responding at the moment. Please try later. Also, make sure that you are using the proper chain type when connecting locally',
+  //       status: 'error',
+  //       duration: 10000,
+  //       isClosable: true,
+  //     });
+  //   }
+  // }, [toast]);
 
   return (
     <SWRConfig>
