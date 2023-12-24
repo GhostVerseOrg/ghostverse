@@ -53,7 +53,7 @@ export const MintForm: FC<MintFormProps> = ({ leftToMintForUser, cb }) => {
         alignItems="center"
         justifyContent={{ base: 'center', md: 'flex-start' }}
       >
-        0.23 EGLD/NFT
+        0.365 EGLD/NFT
         <NumberInput
           maxW="100px"
           min={1}
