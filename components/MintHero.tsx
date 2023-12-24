@@ -10,8 +10,8 @@ import { Authenticated } from './core/Authenticated';
 import { LoginModalButton } from './core/LoginModalButton';
 import { NFTLeftToMint } from './NFTLeftToMint';
 import { NFTAllowlistEnabled } from './NFTAllowlistEnabled';
-import { NFTMintedAlready } from './NFTMintedAlready';
-import { NFTLeftToMintPerAddress } from './NFTLeftToMintPerAddress';
+// import { NFTMintedAlready } from './NFTMintedAlready';
+// import { NFTLeftToMintPerAddress } from './NFTLeftToMintPerAddress';
 
 // TODO: Prepare separate components for the segments here
 
@@ -236,17 +236,17 @@ export const MintHero = () => {
                 data={allowlistCheckData}
                 dataLoading={allowlistCheckLoading}
               />
-              <NFTMintedAlready
+              {/* <NFTMintedAlready
                 data={mintedData}
                 dataLoading={mintedDataLoading}
-              />
+              /> */}
               {!isLoadingTokensLimitPerAddressTotal &&
               !tokensLimitPerAddressPerDropLoading &&
               !Number.isNaN(tokensLeftPerUser) ? (
                 <>
-                  <NFTLeftToMintPerAddress
+                  {/* <NFTLeftToMintPerAddress
                     leftToMintForUser={tokensLeftPerUser}
-                  />
+                  /> */}
                   <MintForm
                     cb={handleRefreshData}
                     leftToMintForUser={tokensLeftPerUser}
@@ -260,13 +260,6 @@ export const MintHero = () => {
                   mt={6}
                   justifyContent={{ base: 'center', md: 'flex-start' }}
                 >
-                  <Text
-                    as="span"
-                    fontSize={{ base: 'md', sm: 'xl' }}
-                    fontWeight="bold"
-                  >
-                    Check your NFTs:
-                  </Text>
                   <Box
                     ml={3}
                     color="elvenTools.color2.base"
@@ -275,7 +268,7 @@ export const MintHero = () => {
                     textDecoration="underline"
                   >
                     <Link color="elvenTools.color2.base" href="/profile">
-                      here
+                      Check your NFTs
                     </Link>
                   </Box>
                 </Box>

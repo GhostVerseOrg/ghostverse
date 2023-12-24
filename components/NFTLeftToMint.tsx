@@ -26,7 +26,7 @@ export const NFTLeftToMint: FC<NFTLeftToMintProps> = ({
       mb={2}
       justifyContent={{ base: 'center', md: 'flex-start' }}
     >
-      <Text>{dropActive ? 'Drop #3' : 'Total'} NFTs left to mint: </Text>
+      <Text color="ghostVerse.blue.darker">{dropActive ? 'Drop #4' : 'Total'} NFTs left to mint: </Text>
       {dataLoading ? (
         <Spinner ml={3} color="ghostVerse.color1.darker" />
       ) : (
