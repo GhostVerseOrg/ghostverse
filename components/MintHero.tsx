@@ -10,7 +10,7 @@ import { Authenticated } from './core/Authenticated';
 import { LoginModalButton } from './core/LoginModalButton';
 import { NFTLeftToMint } from './NFTLeftToMint';
 import { NFTAllowlistEnabled } from './NFTAllowlistEnabled';
-// import { NFTMintedAlready } from './NFTMintedAlready';
+import { NFTMintedAlready } from './NFTMintedAlready';
 // import { NFTLeftToMintPerAddress } from './NFTLeftToMintPerAddress';
 
 // TODO: Prepare separate components for the segments here
@@ -232,14 +232,16 @@ export const MintHero = () => {
               }
               spinnerCentered={isContentCentered}
             >
-              <NFTAllowlistEnabled
-                data={allowlistCheckData}
-                dataLoading={allowlistCheckLoading}
-              />
-              {/* <NFTMintedAlready
-                data={mintedData}
-                dataLoading={mintedDataLoading}
-              /> */}
+              <Box display={'none'}>
+                <NFTAllowlistEnabled
+                  data={allowlistCheckData}
+                  dataLoading={allowlistCheckLoading}
+                />
+                <NFTMintedAlready
+                  data={mintedData}
+                  dataLoading={mintedDataLoading}
+                />
+              </Box>
               {!isLoadingTokensLimitPerAddressTotal &&
               !tokensLimitPerAddressPerDropLoading &&
               !Number.isNaN(tokensLeftPerUser) ? (
