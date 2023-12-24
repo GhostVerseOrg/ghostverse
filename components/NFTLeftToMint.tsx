@@ -20,14 +20,17 @@ export const NFTLeftToMint: FC<NFTLeftToMintProps> = ({
   });
 
   return (
-    <Box
+    <>
+        <Box
       display="flex"
       alignItems="center"
       mb={2}
       justifyContent={{ base: 'center', md: 'flex-start' }}
     >
-      <Text color="ghostVerse.blue.darker">{dropActive ? 'Drop #4' : 'Total'} NFTs left to mint: </Text>
-      
+      <Text color="ghostVerse.blue.darker">
+        {dropActive ? 'Drop #4' : 'Total'} NFTs left to mint:{' '}
+      </Text>
+
       {dataLoading ? (
         <Spinner ml={3} color="ghostVerse.color1.darker" />
       ) : (
@@ -40,7 +43,11 @@ export const NFTLeftToMint: FC<NFTLeftToMintProps> = ({
           {dropActive ? dropData : data}
         </Text>
       )}
-      <Text color="ghostVerse.blue.darker">NFTs left to mint</Text>
+      
     </Box>
+    <Text w={'full'} mb={4} fontSize={'4xl'} color="ghostVerse.blue.default">
+      COMING SOON
+    </Text>
+    </>
   );
 };
