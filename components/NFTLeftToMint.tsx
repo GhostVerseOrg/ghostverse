@@ -44,9 +44,6 @@ export const NFTLeftToMint: FC<NFTLeftToMintProps> = ({
           </Text>
         )}
       </Box>
-      <Text w={'full'} mb={4} fontSize={'4xl'} color="ghostVerse.blue.default">
-        COMING SOON
-      </Text>
     </>
   );
 };

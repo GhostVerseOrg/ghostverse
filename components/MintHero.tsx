@@ -249,12 +249,10 @@ export const MintHero = () => {
                   {/* <NFTLeftToMintPerAddress
                     leftToMintForUser={tokensLeftPerUser}
                   /> */}
-                  <Box display={'none'}>
-                    <MintForm
+                  <MintForm
                       cb={handleRefreshData}
                       leftToMintForUser={tokensLeftPerUser}
                     />
-                  </Box>
                 </>
               ) : null}
               {mintedData && mintedData > 0 ? (
